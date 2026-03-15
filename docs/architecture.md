@@ -1,39 +1,25 @@
 # Architecture Overview
 
-The Latency-Sensitive Chemical Synthesis Optimization Engine is designed to optimize chemical synthesis processes in the pharmaceutical industry. The engine consists of the following components:
+The Cognitive Chemical Synthesis Optimization Engine is designed as a microservices-based architecture, with each component responsible for a specific function. The main components are:
 
-* **Optimization Algorithm**: This component is responsible for optimizing the chemical synthesis process. It uses a combination of machine learning and mathematical modeling to identify the most efficient synthesis route.
-
-* **Chemical Database**: This component stores information about the chemical compounds and their properties. It is used by the optimization algorithm to determine the best synthesis route.
-
-* **API**: This component provides a interface for users to interact with the engine. It allows users to input their synthesis requirements and receive optimized synthesis routes in return.
+* **Chemical Synthesis Service**: responsible for generating optimized synthesis routes for chemical compounds.
+* **Optimization Engine**: uses machine learning algorithms to optimize the synthesis routes.
+* **Database Service**: stores information about chemical compounds, synthesis routes, and optimization results.
 
 ## System Components
 
-The engine is built using the following system components:
+The system consists of the following components:
 
-* **Frontend**: The frontend is built using React and provides a user-friendly interface for users to interact with the engine.
+* **API Gateway**: handles incoming requests and routes them to the appropriate service.
+* **Load Balancer**: distributes incoming traffic across multiple instances of the services.
+* **Container Orchestration**: manages the deployment and scaling of the services.
 
-* **Backend**: The backend is built using Node.js and Express.js. It handles API requests and interacts with the optimization algorithm and chemical database.
+## Data Flow
 
-* **Database**: The database is built using PostgreSQL and stores information about the chemical compounds and their properties.
+The data flow between the components is as follows:
 
-## System Flow
-
-The system flow is as follows:
-
-1. The user inputs their synthesis requirements through the frontend.
-
-2. The frontend sends the synthesis requirements to the backend through the API.
-
-3. The backend receives the synthesis requirements and sends them to the optimization algorithm.
-
-4. The optimization algorithm optimizes the synthesis route and sends the result back to the backend.
-
-5. The backend receives the optimized synthesis route and sends it back to the frontend.
-
-6. The frontend displays the optimized synthesis route to the user.
-
-# Deployment
-
-The engine is deployed using Docker and Kubernetes. The Dockerfile is used to build the image and Kubernetes is used to manage the deployment.
+1. The **API Gateway** receives a request for optimized synthesis routes for a chemical compound.
+2. The request is routed to the **Chemical Synthesis Service**, which generates a list of possible synthesis routes.
+3. The **Optimization Engine** is called to optimize the synthesis routes using machine learning algorithms.
+4. The optimized synthesis routes are stored in the **Database Service**.
+5. The **API Gateway** returns the optimized synthesis routes to the client.
